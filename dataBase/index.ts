@@ -22,9 +22,6 @@ db.getConnection((err, connection) => {
     if (err) {
         console.error('数据库连接失败:', err);
     } else {
-        console.log('数据库连接成功');
-        console.log("当前环境为：", process.env.NODE_ENV);
-        
         connection.release(); // 释放连接
     }
 })

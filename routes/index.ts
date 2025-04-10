@@ -1,10 +1,9 @@
 import express from 'express';
+import { indexController } from "../controller/index";
 var router = express.Router();
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send('Hello Express');
-});
+router.get('/', indexController.index);
 
 export default router;
