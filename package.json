@@ -1,0 +1,35 @@
+{
+  "name": "blogserver",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node-dev --respawn ./bin/server.ts",
+    "start": "node ./dist/bin/server.js",
+    "copy-static": "ts-node copyStatic.ts",
+    "ts-build": "tsc",
+    "build": "npm run ts-build && npm run copy-static"
+  },
+  "dependencies": {
+    "blogserver": "file:",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/debug": "^4.1.12",
+    "@types/express": "^5.0.1",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/mysql": "^2.15.27",
+    "@types/node": "^22.14.0",
+    "@types/shelljs": "^0.8.15",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.9",
+    "shelljs": "^0.9.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
