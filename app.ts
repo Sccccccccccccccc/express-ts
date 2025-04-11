@@ -4,12 +4,13 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index';
 import createError from 'http-errors';
+import cors from 'cors';
 
 // 文章路由模块
 import articleRouter from "./routes/article";
 
 var app = express();
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
