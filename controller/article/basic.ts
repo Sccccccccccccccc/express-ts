@@ -1,6 +1,7 @@
 import type { Request, Response } from 'express'
 import axios from "axios";
 import { queryPromise } from '../../utils/mysql'
+import { successResponseBody } from '../../utils/response'
 
 class Basic {
 
@@ -21,7 +22,15 @@ class Basic {
         try {
             const sql = `SELECT * FROM t_article LIMIT ${offset}, ${pageSize}`
             const result = await queryPromise(sql)
-            res.send(result)
+
+            // res.send(result)
+            successResponseBody({
+                res,
+                status: 200,
+                data: result,
+                msg: '获取文章列表成功',
+            })
+
         } catch (error) {
             res.status(500).json(
                 { code: 500, message: '获取文章列表失败' }
