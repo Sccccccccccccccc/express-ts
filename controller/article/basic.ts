@@ -39,6 +39,35 @@ class Basic {
         }
     }
 
+    // 获取文章详情
+    getArticleDetail = async (req: Request, res: Response) => {
+
+        const { id } = req.query
+        if (!id) {
+            res.status(400).json(
+                { code: 400, message: 'id 不能为空' }
+            )
+            return;
+        }
+        try {
+            const sql = `SELECT * FROM t_article WHERE id = ${id}`
+            const result = await queryPromise(sql)
+            successResponseBody({
+                res,
+                status: 200,
+                data: result,
+                msg: '获取文章详情成功',
+            })
+
+        } catch (error) {
+            res.status(500).json(
+                { code: 500, message: '获取文章详情失败' }
+            )
+            return;
+        }
+        
+    }
+
 }
 
 export const basic = new Basic();

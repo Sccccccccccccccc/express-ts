@@ -18,8 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 ///=======路由信息 （接口地址）开始 存放在./routes目录下===========//
-app.use('/', indexRouter);
-
+app.use('/index', indexRouter);
 app.use("/article", articleRouter);
 
 // catch 404 and forward to error handler
