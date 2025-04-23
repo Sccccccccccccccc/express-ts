@@ -45,13 +45,21 @@ class Basic {
         const { id } = req.query
         if (!id) {
             res.status(400).json(
-                { code: 400, message: 'id 不能为空' }
+                { code: 400, msg: 'id 不能为空' }
             )
             return;
         }
         try {
             const sql = `SELECT * FROM t_article WHERE id = ${id}`
             const result = await queryPromise(sql)
+
+            if(result.length === 0) {
+                res.status(404).json(
+                    { code: 404, msg: '文章不存在' }
+                )
+                return;
+            }
+
             successResponseBody({
                 res,
                 status: 200,
@@ -61,7 +69,7 @@ class Basic {
 
         } catch (error) {
             res.status(500).json(
-                { code: 500, message: '获取文章详情失败' }
+                { code: 500, msg: '获取文章详情失败' }
             )
             return;
         }
