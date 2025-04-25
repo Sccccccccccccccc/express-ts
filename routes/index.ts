@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 /* GET home page. */
-router.get('/', indexController.index);
+router.get('/index', indexController.index);
 router.get('/randomTitle', indexController.randomTitle);
 
 export default router;
